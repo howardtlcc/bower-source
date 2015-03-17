@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom"
+	dojoParseOnLoad="true"
+	dojoTheme="true">
+	<xp:this.resources>
+		<xp:dojoModule
+			name="dijit.form.TimeTextBox" />
+		<xp:dojoModule
+			name="dijit.form.DateTextBox" />
+	</xp:this.resources>
+	<xp:inputText
+		id="endTime1"
+		required="true"
+		style="width:5em"
+		styleClass="lotusText"
+		tabindex="5">
+		<xp:this.converter>
+			<xp:convertDateTime
+				type="time"
+				timeStyle="short" />
+		</xp:this.converter>
+		<xp:this.defaultValue><![CDATA[#{javascript:var dt = new Date();
+dt.setHours(17,0);
+return dt;}]]></xp:this.defaultValue>
+		<xp:dateTimeHelper
+			dojoType="dijit.form.TimeTextBox"
+			id="dateTimeHelperEndTime">
+			<xp:this.dojoAttributes>
+				<xp:dojoAttribute
+					name="displayedValue"
+					value="17:00">
+				</xp:dojoAttribute>
+				<xp:dojoAttribute
+					name="constraints"
+					value="{timePattern: 'HH:mm', clickableIncrement: 'T01:00:00', visibleIncrement: 'T02:00:00',visibleRange: 'T05:00:00'}" />
+			</xp:this.dojoAttributes>
+		</xp:dateTimeHelper>
+	</xp:inputText>
+	<xp:inputText id="inputText1">
+		<xp:dateTimeHelper id="dateTimeHelper1"
+		></xp:dateTimeHelper>
+		<xp:this.converter>
+			<xp:convertDateTime type="time"></xp:convertDateTime>
+		</xp:this.converter>
+	</xp:inputText>
+</xp:view>

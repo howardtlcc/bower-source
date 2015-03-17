@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+
+	
+	<xp:label
+		value="Label"
+		id="label1">
+	</xp:label>
+	<xp:inputText
+		id="chosenTime1" value="#{viewScope.chosenTime}">
+		
+		<xp:this.defaultValue><![CDATA[#{javascript:var today = new Date();
+var start = new Date(
+    today.getYear(),
+    today.getMonth(),
+    today.getDay(),
+    8, 0, 0);
+ return start;}]]></xp:this.defaultValue>
+		<xp:dateTimeHelper id="dateTimeHelper1"></xp:dateTimeHelper>
+		<xp:this.converter>
+			<xp:convertDateTime type="time"></xp:convertDateTime>
+		</xp:this.converter>
+		
+		</xp:inputText>
+	<xp:br></xp:br>
+	<xp:br></xp:br>
+	<xp:button
+		value="set value"
+		id="button1">
+	<xp:eventHandler
+		event="onclick"
+		submit="true"
+		refreshMode="partial" refreshId="computedField1">
+	</xp:eventHandler></xp:button>
+	<xp:br></xp:br>
+	<xp:br></xp:br>
+	<xp:br></xp:br>
+	
+	
+	<xp:eventHandler
+		event="onClientLoad"
+		submit="false">
+		<xp:this.script><![CDATA[var today = new Date();
+var min = new Date(
+    today.getYear(),
+    today.getMonth(),
+    today.getDay(),
+    8, 0, 0);
+var max = new Date(
+    today.getYear(),
+    today.getMonth(),
+    today.getDay(),
+    18, 0, 0);
+    
+ 
+var effectiveDate = dijit.byId("#{id:chosenTime1}");
+
+effectiveDate.constraints.min = min;
+effectiveDate.constraints.max = max;]]></xp:this.script>
+	</xp:eventHandler>
+	<xp:text
+		escape="true"
+		id="computedField1" value="#{viewScope.chosenTime}">
+		<xp:this.converter>
+			<xp:convertDateTime type="time"></xp:convertDateTime>
+		</xp:this.converter>
+	</xp:text>
+	</xp:view>

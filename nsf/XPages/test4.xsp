@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+
+	<xp:inputText
+		id="inputText1"
+		style="width:142.0px"
+		value="#{viewScope.time}">
+		<xp:dateTimeHelper id="dateTimeHelper1"></xp:dateTimeHelper>
+		<xp:this.converter>
+			<xp:convertDateTime type="time"></xp:convertDateTime>
+		</xp:this.converter>
+	</xp:inputText></xp:view>

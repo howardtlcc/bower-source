@@ -14,9 +14,17 @@
 	
 	<resource>
 		<content-type>text/css</content-type>
-		<href>bower-components/DataTables/media/bootstrap.css</href>
+		<href>bower_components/DataTables/media/css/dataTables.bootstrap.css</href>
 	</resource>
-
+	<resource>
+		<content-type>application/x-javascript</content-type>
+		<href>bower_components/DataTables/media/js/dataTables.bootstrap.js</href>
+	</resource>
+	<resource>
+		<content-type>application/x-javascript</content-type>
+		<href>bower_components/DataTables/media/js/jquery.dataTables.min.js</href>
+	</resource>
+	
 	<!--
 		Use this pattern to define property name/value pairs for controls
 	-->

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+
+	
+	<xp:inputText id="inputText1">
+		<xp:dateTimeHelper
+			id="dateTimeHelper1">
+		</xp:dateTimeHelper>
+		<xp:this.converter>
+			<xp:convertDateTime type="time"></xp:convertDateTime>
+		</xp:this.converter>
+	</xp:inputText>
+	<xp:br></xp:br>
+	<xp:br></xp:br>
+	<xp:button
+		value="Label"
+		id="button1">
+	</xp:button>
+	&#160;&#160;&#160;<xp:text
+		escape="true"
+		id="computedField1">
+	</xp:text>
+	</xp:view>

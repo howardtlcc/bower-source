@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+	<xp:div style="width:70%">
+		<xp:button
+			value="Label"
+			id="button1">
+			<xp:eventHandler
+				event="onclick"
+				submit="false">
+				<xp:this.script><![CDATA[$("#dataSimple").dataTable({});]]></xp:this.script>
+			</xp:eventHandler>
+		</xp:button>
+		<table
+			id="dataSimple"
+			style="width:50%"
+			class="table table-striped table-hover table-bordered">
+			<thead>
+				<th>test head 1</th>
+				<th>test head 2</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>test1a</td>
+					<td>test1b</td>
+				</tr>
+				<tr>
+					<td>test2a</td>
+					<td>test2b</td>
+				</tr>
+			</tbody>
+		</table>
+	</xp:div>
+</xp:view>

@@ -40,7 +40,14 @@ return dt;}]]></xp:this.defaultValue>
 	</xp:inputText>
 	<xp:inputText id="inputText1">
 		<xp:dateTimeHelper id="dateTimeHelper1"
+		dojoType="dijit.form.TimeTextBox"
 		></xp:dateTimeHelper>
+		<xp:this.dojoAttributes>
+				<xp:dojoAttribute
+					name="displayedValue"
+					value="17:00">
+				</xp:dojoAttribute>
+				</xp:this.dojoAttributes>
 		<xp:this.converter>
 			<xp:convertDateTime type="time"></xp:convertDateTime>
 		</xp:this.converter>

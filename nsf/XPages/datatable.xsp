@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core">
 	<xp:div style="width:70%">
-		<xp:button
-			value="Label"
-			id="button1">
-			<xp:eventHandler
-				event="onclick"
-				submit="false">
-				<xp:this.script><![CDATA[$("#dataSimple").dataTable({});]]></xp:this.script>
-			</xp:eventHandler>
-		</xp:button>
+		
 		<table
 			id="dataSimple"
 			style="width:50%"
 			class="table table-striped table-hover table-bordered">
 			<thead>
+			<tr>
 				<th>test head 1</th>
 				<th>test head 2</th>
+			</tr>
 			</thead>
 			<tbody>
 				<tr>
@@ -30,4 +24,10 @@
 			</tbody>
 		</table>
 	</xp:div>
-</xp:view>
+	<xp:eventHandler
+		event="onClientLoad"
+		submit="false">
+		<xp:this.script><![CDATA[$(document).ready( function () {
+    $('#dataSimple').DataTable();
+} );]]></xp:this.script>
+	</xp:eventHandler></xp:view>

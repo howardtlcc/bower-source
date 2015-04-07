@@ -11,19 +11,22 @@
 		Use this pattern to include resources (such as style sheets
 		and JavaScript files that are used by this theme.
 	-->
-	
-	<resource>
-		<content-type>text/css</content-type>
-		<href>bower_components/DataTables/media/css/dataTables.bootstrap.css</href>
+<resource>
+		<content-type>application/x-javascript</content-type>
+		<href>bower_components/DataTables/media/js/jquery.dataTables.min.js</href>
 	</resource>
 	<resource>
 		<content-type>application/x-javascript</content-type>
 		<href>bower_components/DataTables/media/js/dataTables.bootstrap.js</href>
 	</resource>
+
+	
 	<resource>
-		<content-type>application/x-javascript</content-type>
-		<href>bower_components/DataTables/media/js/jquery.dataTables.min.js</href>
+		<content-type>text/css</content-type>
+		<href>bower_components/DataTables/media/css/dataTables.bootstrap.css</href>
 	</resource>
+
+	
 	
 	<!--
 		Use this pattern to define property name/value pairs for controls

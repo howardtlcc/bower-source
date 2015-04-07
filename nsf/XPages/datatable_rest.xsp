@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex">
+<style>
+
+.dataTables_scrollBody thead {visibility: hidden;}
+</style>
+
+	<xp:scriptBlock id="scriptBlock1">
+		<xp:this.value><![CDATA[$(document).ready( function() {
+$("#dataSimple").dataTable( {
+stateSave : true,
+"language" : {
+"lengthMenu" : "Records per page _MENU_",
+"info" : "Page _PAGE_ of _PAGES_",
+"infoEmpty" : "No records available",
+"infoFiltered" : ""
+},  "scrollY":        "400px",
+
+"ajax" : "datatable_rest.xsp/data4",
+"columns" : [ 
+{"data" : "firstname"},
+{"data" : "lastname"},
+{"data" : "city"},
+{"data" : "state"}
+]
+});
+
+})]]></xp:this.value>
+	</xp:scriptBlock>
+	<xp:div style="width:70%">
+		<table
+			id="dataSimple"
+			style="width:100%"
+			cellpadding= "0"
+			class="table table-striped table-bordered table-hover">
+			<thead>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>city</th>
+				<th>state</th>
+			
+			
+			</tr>
+			</thead>
+		
+		</table>
+	</xp:div>
+	
+	<xe:restService id="restService1" pathInfo="data2">
+		<xe:this.service>
+			<xe:customRestService>
+				<xe:this.doGet><![CDATA[#{javascript:var jsonCarrier = {};
+var jsonData = [];
+ 
+var thisEntry = {};
+thisEntry.firstname = 'Howard';
+thisEntry.lastname = 'Greenberg';
+thisEntry.city = 'Boca';
+thisEntry.state = 'Florida';
+jsonData.push(thisEntry);
+jsonData.push(thisEntry);
+jsonData.push(thisEntry);
+jsonData.push(thisEntry); 
+ jsonCarrier.data = jsonData;
+return toJson(jsonCarrier);}]]></xe:this.doGet>
+			</xe:customRestService>
+		</xe:this.service>
+	</xe:restService>
+	<xe:restService
+		id="restService2"
+		pathInfo="data3">
+		<xe:this.service>
+			<xe:viewItemFileService
+				databaseName="DojoDataGrids.nsf"
+				viewName="ByName-First"
+				systemColumns="2"
+				globalValues="1"
+				compact="true"
+				count="10000">
+				<xe:this.columns>
+					<xe:restViewColumn
+						columnName="lastname"
+						name="lastname">
+					</xe:restViewColumn>
+					<xe:restViewColumn
+						columnName="firstname"
+						name="firstname">
+					</xe:restViewColumn>
+					<xe:restViewColumn
+						columnName="city"
+						name="city">
+					</xe:restViewColumn>
+					<xe:restViewColumn
+						columnName="state"
+						name="state">
+					</xe:restViewColumn>
+				</xe:this.columns>
+			</xe:viewItemFileService>
+		</xe:this.service>
+	</xe:restService>
+	<xe:restService
+		id="restService3"
+		pathInfo="data4">
+		<xe:this.service>
+			<xe:customRestService>
+				<xe:this.doGet><![CDATA[#{javascript:var jsonCarrier = {};
+var jsonData = [];
+var db:NotesDatabase = session.getDatabase(session.getServerName(),"DojoDataGrids.nsf");
+var PersonView:NotesView = db.getView("ByName-First");
+var vwEntryCol:NotesViewEntryCollection= PersonView.getAllEntries();
+var vwEntry:NotesViewEntry = vwEntryCol.getFirstEntry();
+while (vwEntry!= null){
+	thisEntry = {};
+	var rowData = vwEntry.getColumnValues();
+	thisEntry.firstname = rowData.elementAt(0);
+	thisEntry.lastname = rowData.elementAt(1);
+	thisEntry.city = rowData.elementAt(3);
+	thisEntry.state = rowData.elementAt(4);
+	jsonData.push(thisEntry);
+	temp = vwEntryCol.getNextEntry(vwEntry);
+	vwEntry.recycle();
+	vwEntry = temp;
+	
+}
+jsonCarrier.data = jsonData;
+return toJson(jsonCarrier);
+
+}]]></xe:this.doGet>
+			</xe:customRestService>
+		</xe:this.service>
+	</xe:restService>
+	</xp:view>

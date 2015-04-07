@@ -52,4 +52,11 @@ return dt;}]]></xp:this.defaultValue>
 			<xp:convertDateTime type="time"></xp:convertDateTime>
 		</xp:this.converter>
 	</xp:inputText>
-</xp:view>
+	<xp:radio
+		text="Label"
+		id="radio1">
+	</xp:radio>
+	<xp:text
+		escape="true"
+		id="computedField1">
+	</xp:text></xp:view>

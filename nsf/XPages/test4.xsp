@@ -9,4 +9,8 @@
 		<xp:this.converter>
 			<xp:convertDateTime type="time"></xp:convertDateTime>
 		</xp:this.converter>
-	</xp:inputText></xp:view>
+	</xp:inputText>
+	<xp:button
+		value="Label"
+		id="button1">
+	</xp:button></xp:view>
